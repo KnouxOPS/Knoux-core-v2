@@ -1,0 +1,617 @@
+/**
+ * KnouxCore - الأنماط العالمية المحسنة
+ * أنماط مخصصة للتطبيق الفضائي مع ت��ثيرات متقدمة
+ */
+
+/* استيراد الخطوط العربية المحسنة */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* متغيرات الألوان الأساسية */
+:root {
+  /* ألوان KnouxCore الأساسية */
+  --knoux-primary: #00ffd5;
+  --knoux-secondary: #7c3aed;
+  --knoux-accent: #ff1493;
+  --knoux-background: #0a0015;
+  --knoux-surface: #1a0025;
+  --knoux-text: #e0e0e0;
+  --knoux-text-muted: #a0a0a0;
+
+  /* تدرجات النيون */
+  --neon-cyan: #00ffd5;
+  --neon-violet: #7c3aed;
+  --neon-pink: #ff1493;
+  --neon-gold: #ffd700;
+
+  /* تأثيرات زجاجية */
+  --glass-bg: rgba(26, 0, 37, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-backdrop: blur(20px);
+
+  /* ظلال وتوهجات */
+  --shadow-glow: 0 0 20px rgba(0, 255, 213, 0.3);
+  --shadow-intense: 0 0 40px rgba(124, 58, 237, 0.5);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  /* انتقالات */
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.3s ease-out;
+  --transition-slow: 0.6s ease-out;
+}
+
+/* إعدادات أساسية محسنة */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Cairo", "Tajawal", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--knoux-text);
+  background: var(--knoux-background);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1;
+}
+
+/* تحسينات الخطوط العربية */
+[dir="rtl"] {
+  font-family: "Cairo", "Tajawal", "Arial", sans-serif;
+  text-align: right;
+}
+
+[dir="ltr"] {
+  font-family: "Inter", "Cairo", "Arial", sans-serif;
+  text-align: left;
+}
+
+/* تحسينات العناوين */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  color: var(--knoux-text);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+h5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+h6 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* تحسينات الروابط */
+a {
+  color: var(--knoux-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+a:hover {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(0, 255, 213, 0.6);
+}
+
+/* تحسينات الأزرار */
+button {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all var(--transition-fast);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* تحسينات الحقول */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--knoux-text);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  transition: all var(--transition-fast);
+  backdrop-filter: var(--glass-backdrop);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 0 2px rgba(0, 255, 213, 0.2);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--knoux-text-muted);
+  opacity: 1;
+}
+
+/* تخصيص شريط التمرير العالمي */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 0, 37, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-cyan), var(--neon-violet));
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 255, 213, 0.8),
+    rgba(124, 58, 237, 0.8)
+  );
+  box-shadow: 0 0 10px rgba(0, 255, 213, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* تخصيص التحديد */
+::selection {
+  background: rgba(0, 255, 213, 0.3);
+  color: var(--knoux-text);
+  text-shadow: 0 0 8px rgba(0, 255, 213, 0.6);
+}
+
+::-moz-selection {
+  background: rgba(0, 255, 213, 0.3);
+  color: var(--knoux-text);
+  text-shadow: 0 0 8px rgba(0, 255, 213, 0.6);
+}
+
+/* كلاسات مساعدة للتأثيرات */
+.glassmorphism {
+  backdrop-filter: var(--glass-backdrop);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.neon-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.neon-glow-intense {
+  box-shadow: var(--shadow-intense);
+}
+
+.neon-text-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px rgba(0, 255, 213, 0.7);
+}
+
+.neon-text-violet {
+  color: var(--neon-violet);
+  text-shadow: 0 0 10px rgba(124, 58, 237, 0.7);
+}
+
+.neon-text-pink {
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px rgba(255, 20, 147, 0.7);
+}
+
+.gradient-text-primary {
+  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-violet));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.gradient-text-secondary {
+  background: linear-gradient(45deg, var(--neon-pink), var(--neon-gold));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+/* تأثيرات الحركة */
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3);
+  }
+  to {
+    box-shadow:
+      0 0 30px rgba(0, 255, 213, 0.7),
+      0 0 40px rgba(124, 58, 237, 0.4);
+  }
+}
+
+.animate-pulse-neon {
+  animation: pulseNeon 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseNeon {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(0, 255, 213, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    text-shadow:
+      0 0 20px rgba(0, 255, 213, 1),
+      0 0 30px rgba(124, 58, 237, 0.8);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* تحسينات الوصولية */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.focus-visible:focus {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 255, 213, 0.2);
+}
+
+/* تحسينات الاستجابة */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  h4 {
+    font-size: 1.25rem;
+  }
+  h5 {
+    font-size: 1.125rem;
+  }
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* تحسينات الطباعة */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    break-after: avoid;
+    color: black !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* تحسينات الأداء */
+.hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* تحسينات تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* تحسينات الوضع الداكن */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* تحسينات الشفافية */
+@media (prefers-reduced-transparency: reduce) {
+  .glassmorphism {
+    backdrop-filter: none;
+    background: rgba(26, 0, 37, 0.9);
+  }
+}
+
+/* كلاسات مساعدة للتخطيط */
+.container-fluid {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* تحسينات للأجهزة عالية الدقة */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .crisp-edges {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ===============================
+   OMD (Operational Monitor Display) Specific Styles
+   =============================== */
+
+/* Animated border for OMD panel */
+@keyframes borderShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Scan lines effect */
+@keyframes scanlines {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Grid movement animation */
+@keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Floating animation for particles */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Enhanced neon text effects for OMD */
+.neon-text-cyan-bright {
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 5px rgba(0, 255, 213, 0.8),
+    0 0 10px rgba(0, 255, 213, 0.6),
+    0 0 15px rgba(0, 255, 213, 0.4);
+}
+
+.neon-text-violet-bright {
+  color: var(--neon-violet);
+  text-shadow:
+    0 0 5px rgba(124, 58, 237, 0.8),
+    0 0 10px rgba(124, 58, 237, 0.6),
+    0 0 15px rgba(124, 58, 237, 0.4);
+}
+
+/* Data flow animations */
+@keyframes dataFlow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Status indicator animations */
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Enhanced glassmorphism for OMD */
+.glassmorphism-luxury {
+  background: rgba(16, 16, 32, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.37),
+    0 0 15px rgba(120, 58, 237, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Utility classes for OMD components */
+.omd-metric-icon {
+  filter: drop-shadow(0 0 8px currentColor);
+  transition: all 0.3s ease;
+}
+
+.omd-metric-icon:hover {
+  filter: drop-shadow(0 0 12px currentColor);
+  transform: scale(1.1);
+}
+
+.omd-section-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Status color variants */
+.status-excellent {
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+}
+
+.status-good {
+  color: #00ffd5;
+  text-shadow: 0 0 10px rgba(0, 255, 213, 0.6);
+}
+
+.status-warning {
+  color: #ffaa00;
+  text-shadow: 0 0 10px rgba(255, 170, 0, 0.6);
+}
+
+.status-critical {
+  color: #ff4444;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
+}

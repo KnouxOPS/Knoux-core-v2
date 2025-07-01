@@ -1,0 +1,6 @@
+
+{
+  "name": "KnouxCore: المركز الذكي للتحكم الفضائي - الإصدار البلاتيني",
+  "description": "KnouxCore is an advanced, visually stunning application interface designed for managing tasks with a cosmic cyber glow and glassmorphism aesthetic. It simulates a smart space control center with features like download management, system monitoring, and a unique 'cyber battlefield' data visualization.",
+  "requestFramePermissions": ["microphone"]
+}

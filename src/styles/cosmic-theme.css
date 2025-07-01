@@ -1,0 +1,538 @@
+/**
+ * KnouxCore Cosmic Theme - النظام الكوني المتقدم
+ * تأثيرات بصرية فضائية متطورة مع ذكاء اصطناعي
+ */
+
+/* ===== COSMIC VARIABLES ===== */
+:root {
+  /* Primary Cosmic Colors */
+  --cosmic-void: #0a0015;
+  --cosmic-deep: #1a0025;
+  --cosmic-nebula: #2d0036;
+  --cosmic-stellar: #4b006e;
+
+  /* Neon Energies */
+  --neon-cyan: #00ffd5;
+  --neon-violet: #7c3aed;
+  --neon-plasma: #ff1493;
+  --neon-solar: #ffd700;
+  --neon-emerald: #10b981;
+  --neon-crimson: #ef4444;
+
+  /* Advanced Glassmorphism */
+  --glass-ultra: rgba(26, 0, 37, 0.15);
+  --glass-premium: rgba(16, 16, 32, 0.25);
+  --glass-elite: rgba(75, 0, 110, 0.2);
+
+  /* Cosmic Gradients */
+  --gradient-void: linear-gradient(
+    135deg,
+    var(--cosmic-void) 0%,
+    var(--cosmic-deep) 25%,
+    var(--cosmic-nebula) 50%,
+    var(--cosmic-stellar) 75%,
+    var(--cosmic-deep) 100%
+  );
+
+  --gradient-neon: linear-gradient(
+    45deg,
+    var(--neon-cyan) 0%,
+    var(--neon-violet) 50%,
+    var(--neon-plasma) 100%
+  );
+
+  --gradient-aurora: linear-gradient(
+    90deg,
+    var(--neon-cyan) 0%,
+    var(--neon-emerald) 25%,
+    var(--neon-violet) 50%,
+    var(--neon-plasma) 75%,
+    var(--neon-solar) 100%
+  );
+
+  /* Quantum Shadows */
+  --shadow-quantum:
+    0 0 30px rgba(0, 255, 213, 0.4), 0 0 60px rgba(124, 58, 237, 0.3),
+    0 8px 32px rgba(0, 0, 0, 0.5);
+
+  --shadow-plasma:
+    0 0 20px rgba(255, 20, 147, 0.6), 0 0 40px rgba(255, 20, 147, 0.4),
+    0 4px 20px rgba(0, 0, 0, 0.7);
+
+  --shadow-solar:
+    0 0 25px rgba(255, 215, 0, 0.5), 0 0 50px rgba(255, 215, 0, 0.3),
+    0 6px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== COSMIC ANIMATIONS ===== */
+@keyframes cosmic-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes stellar-drift {
+  0% {
+    transform: translateX(-100vw) translateY(20px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100vw) translateY(-20px) rotate(360deg);
+  }
+}
+
+@keyframes plasma-flow {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes quantum-scan {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes hologram-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  2% {
+    opacity: 0.8;
+  }
+  4% {
+    opacity: 1;
+  }
+  6% {
+    opacity: 0.9;
+  }
+  8% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes energy-surge {
+  0% {
+    box-shadow: var(--shadow-quantum);
+    border-color: var(--neon-cyan);
+  }
+  33% {
+    box-shadow: var(--shadow-plasma);
+    border-color: var(--neon-plasma);
+  }
+  66% {
+    box-shadow: var(--shadow-solar);
+    border-color: var(--neon-solar);
+  }
+  100% {
+    box-shadow: var(--shadow-quantum);
+    border-color: var(--neon-cyan);
+  }
+}
+
+@keyframes data-stream {
+  0% {
+    transform: translateX(-100%) skew(-10deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) skew(-10deg);
+    opacity: 0;
+  }
+}
+
+/* ===== COSMIC COMPONENTS ===== */
+
+/* Ultra Premium Glassmorphism */
+.cosmic-glass-ultra {
+  background: var(--glass-ultra);
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: var(--shadow-quantum);
+  position: relative;
+  overflow: hidden;
+}
+
+.cosmic-glass-ultra::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: stellar-drift 3s infinite;
+}
+
+/* Advanced Neon Text Effects */
+.neon-text-cosmic {
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+  animation: cosmic-pulse 2s ease-in-out infinite;
+}
+
+.neon-text-plasma {
+  color: var(--neon-plasma);
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor;
+  animation: hologram-flicker 0.1s infinite;
+}
+
+.neon-text-solar {
+  color: var(--neon-solar);
+  text-shadow:
+    0 0 8px currentColor,
+    0 0 16px currentColor,
+    0 0 24px currentColor;
+}
+
+/* Quantum Borders */
+.quantum-border {
+  position: relative;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--cosmic-deep), var(--cosmic-deep)) padding-box,
+    var(--gradient-aurora) border-box;
+  animation: energy-surge 4s ease-in-out infinite;
+}
+
+.quantum-border::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient-aurora);
+  border-radius: inherit;
+  z-index: -1;
+  animation: plasma-flow 3s linear infinite;
+}
+
+/* Holographic Cards */
+.holographic-card {
+  background: var(--glass-premium);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 213, 0.3);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.holographic-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-aurora);
+  animation: data-stream 2s linear infinite;
+}
+
+.holographic-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 213, 0.03) 2px,
+    rgba(0, 255, 213, 0.03) 4px
+  );
+  animation: quantum-scan 3s linear infinite;
+  pointer-events: none;
+}
+
+.holographic-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-quantum);
+  border-color: var(--neon-cyan);
+}
+
+/* Cosmic Buttons */
+.cosmic-button {
+  background: var(--glass-elite);
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cosmic-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 213, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.cosmic-button:hover {
+  box-shadow: var(--shadow-quantum);
+  text-shadow: 0 0 10px currentColor;
+  transform: translateY(-2px);
+}
+
+.cosmic-button:hover::before {
+  left: 100%;
+}
+
+.cosmic-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-plasma);
+}
+
+/* Quantum Progress Bars */
+.quantum-progress {
+  background: var(--cosmic-deep);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  height: 8px;
+  border: 1px solid var(--neon-cyan);
+}
+
+.quantum-progress::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--gradient-aurora);
+  border-radius: inherit;
+  animation: plasma-flow 2s linear infinite;
+  transition: width 0.3s ease;
+}
+
+/* Stellar Navigation */
+.stellar-nav {
+  background: var(--glass-ultra);
+  backdrop-filter: blur(30px);
+  border-right: 1px solid rgba(0, 255, 213, 0.2);
+  position: relative;
+}
+
+.stellar-nav::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--gradient-aurora);
+  animation: data-stream 4s linear infinite;
+}
+
+/* Data Visualization */
+.data-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 15px currentColor;
+  position: absolute;
+  animation: cosmic-pulse 1.5s ease-in-out infinite;
+}
+
+.data-node.anomaly {
+  background: var(--neon-crimson);
+  animation: hologram-flicker 0.3s infinite;
+}
+
+.data-node.prediction {
+  background: var(--neon-violet);
+  animation: cosmic-pulse 2s ease-in-out infinite reverse;
+}
+
+/* Cosmic Grid */
+.cosmic-grid {
+  background-image:
+    linear-gradient(rgba(0, 255, 213, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 213, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: stellar-drift 20s linear infinite;
+}
+
+/* Status Indicators */
+.status-optimal {
+  color: var(--neon-emerald);
+  text-shadow: 0 0 10px currentColor;
+}
+
+.status-warning {
+  color: var(--neon-solar);
+  text-shadow: 0 0 10px currentColor;
+  animation: cosmic-pulse 1s ease-in-out infinite;
+}
+
+.status-critical {
+  color: var(--neon-crimson);
+  text-shadow: 0 0 15px currentColor;
+  animation: hologram-flicker 0.2s infinite;
+}
+
+/* Command Interface */
+.command-terminal {
+  background: var(--cosmic-void);
+  border: 2px solid var(--neon-cyan);
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  color: var(--neon-cyan);
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.command-terminal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 213, 0.02) 2px,
+    rgba(0, 255, 213, 0.02) 4px
+  );
+  animation: quantum-scan 2s linear infinite;
+  pointer-events: none;
+}
+
+/* Responsive Cosmic Design */
+@media (max-width: 768px) {
+  .cosmic-glass-ultra {
+    backdrop-filter: blur(15px);
+  }
+
+  .holographic-card {
+    backdrop-filter: blur(12px);
+  }
+
+  .stellar-nav {
+    backdrop-filter: blur(20px);
+  }
+}
+
+/* Performance Optimizations */
+.cosmic-performance {
+  will-change: transform, opacity, filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Cosmic Typography */
+.cosmic-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--gradient-aurora);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  animation: plasma-flow 3s linear infinite;
+}
+
+.cosmic-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Arabic Typography Enhancements */
+[dir="rtl"] .cosmic-title,
+[dir="rtl"] .cosmic-subtitle {
+  font-family: "Cairo", "Tajawal", sans-serif;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1;
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --cosmic-void: #f8fafc;
+    --cosmic-deep: #e2e8f0;
+    --cosmic-nebula: #cbd5e1;
+    --cosmic-stellar: #94a3b8;
+  }
+}
