@@ -193,19 +193,19 @@ const LiveKnouxTVBar: React.FC = () => {
   }, []);
 
   // تنسيق الوقت
-  const formatTime = (seconds: number) => {
+  const formatTime = useCallback((seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
+  }, []);
 
   // تنسيق عدد المشاهدات
-  const formatViewers = (viewers: number) => {
+  const formatViewers = useCallback((viewers: number) => {
     if (viewers >= 1000) return `${(viewers / 1000).toFixed(1)}K`;
     return viewers.toString();
-  };
+  }, []);
 
-  // التبديل بين القنوات مع تحسين الأداء
+  // التبديل بين القنوات مع تحسين ��لأداء
   const switchChannel = useCallback(
     (direction: 'next' | 'prev') => {
       const currentIndex = mockChannels.findIndex(ch => ch.id === currentChannel.id);
