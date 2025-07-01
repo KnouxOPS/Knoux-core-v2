@@ -50,9 +50,14 @@ const TVNotificationOverlay: React.FC<TVNotificationOverlayProps> = ({
     }, notification.duration);
   };
 
-  // مراقبة تغييرات القناة
+  // مراقبة تغييرات القناة مع تجنب التكرار
+  const [lastChannel, setLastChannel] = useState<string>('');
+  const [lastViewerMilestone, setLastViewerMilestone] = useState<number>(0);
+  const [lastSignalWarning, setLastSignalWarning] = useState<number>(Date.now());
+
   useEffect(() => {
-    if (currentChannel) {
+    if (currentChannel && currentChannel !== lastChannel) {
+      setLastChannel(currentChannel);
       addNotification({
         type: 'channel_change',
         title: 'Channel Changed',
@@ -64,12 +69,13 @@ const TVNotificationOverlay: React.FC<TVNotificationOverlayProps> = ({
         duration: 3000,
       });
     }
-  }, [currentChannel]);
+  }, [currentChannel, lastChannel]);
 
-  // مراقبة معالم المشاهدين
+  // مراقبة معالم المشاهدين مع تجنب التكرار
   useEffect(() => {
     const milestone = Math.floor(viewers / 1000) * 1000;
-    if (milestone > 0 && viewers >= milestone && viewers < milestone + 100) {
+    if (milestone > 0 && milestone > lastViewerMilestone && viewers >= milestone) {
+      setLastViewerMilestone(milestone);
       addNotification({
         type: 'viewer_milestone',
         title: 'Viewer Milestone',
@@ -81,11 +87,14 @@ const TVNotificationOverlay: React.FC<TVNotificationOverlayProps> = ({
         duration: 4000,
       });
     }
-  }, [viewers]);
+  }, [viewers, lastViewerMilestone]);
 
-  // مراقبة جودة الإشارة
+  // مراقبة جودة الإشارة مع تجنب التكرار المستمر
   useEffect(() => {
-    if (signal < 80) {
+    const now = Date.now();
+    if (signal < 80 && now - lastSignalWarning > 30000) {
+      // تنبيه كل 30 ثانية فقط
+      setLastSignalWarning(now);
       addNotification({
         type: 'quality_change',
         title: 'Signal Quality',
@@ -97,7 +106,7 @@ const TVNotificationOverlay: React.FC<TVNotificationOverlayProps> = ({
         duration: 5000,
       });
     }
-  }, [signal]);
+  }, [signal, lastSignalWarning]);
 
   return (
     <div className="fixed top-20 right-4 z-40 space-y-2 pointer-events-none">
