@@ -372,7 +372,7 @@ const DeveloperServicesHub: React.FC = () => {
         <div className="absolute inset-0">
           {Array.from({ length: 3 }).map((_, i) => (
             <motion.div
-              key={i}
+              key={`bg-light-${i}`}
               className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-30"
               style={{ top: `${30 + i * 25}%` }}
               animate={{
