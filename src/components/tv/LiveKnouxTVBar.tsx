@@ -205,28 +205,34 @@ const LiveKnouxTVBar: React.FC = () => {
     return viewers.toString();
   };
 
-  // التبديل بين القنوات
-  const switchChannel = (direction: 'next' | 'prev') => {
-    const currentIndex = mockChannels.findIndex(ch => ch.id === currentChannel.id);
-    let newIndex;
+  // التبديل بين القنوات مع تحسين الأداء
+  const switchChannel = useCallback(
+    (direction: 'next' | 'prev') => {
+      const currentIndex = mockChannels.findIndex(ch => ch.id === currentChannel.id);
+      let newIndex;
 
-    if (direction === 'next') {
-      newIndex = (currentIndex + 1) % mockChannels.length;
-    } else {
-      newIndex = currentIndex === 0 ? mockChannels.length - 1 : currentIndex - 1;
-    }
+      if (direction === 'next') {
+        newIndex = (currentIndex + 1) % mockChannels.length;
+      } else {
+        newIndex = currentIndex === 0 ? mockChannels.length - 1 : currentIndex - 1;
+      }
 
-    setCurrentChannel(mockChannels[newIndex]);
-    setLiveContent({
-      title: mockChannels[newIndex].currentShow,
-      titleAr: mockChannels[newIndex].currentShowAr,
-      duration: 3600,
-      elapsed: Math.floor(Math.random() * 1800),
-      thumbnails: ['/api/placeholder/160/90'],
-      description: `Live content from ${mockChannels[newIndex].name}`,
-      descriptionAr: `محتوى مباشر من ${mockChannels[newIndex].nameAr}`,
-    });
-  };
+      const newChannel = mockChannels[newIndex];
+      if (newChannel.id !== currentChannel.id) {
+        setCurrentChannel(newChannel);
+        setLiveContent({
+          title: newChannel.currentShow,
+          titleAr: newChannel.currentShowAr,
+          duration: 3600,
+          elapsed: Math.floor(Math.random() * 1800),
+          thumbnails: ['/api/placeholder/160/90'],
+          description: `Live content from ${newChannel.name}`,
+          descriptionAr: `محتوى مباشر من ${newChannel.nameAr}`,
+        });
+      }
+    },
+    [currentChannel.id]
+  );
 
   return (
     <motion.div
