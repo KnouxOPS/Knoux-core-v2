@@ -3,7 +3,8 @@
  * Developer Services Hub - Complete Cosmic Development Environment
  */
 
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+'use client';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
@@ -29,6 +30,9 @@ import {
   Rocket,
   Shield,
   Globe,
+  ChevronRight,
+  Info,
+  Loader,
 } from 'lucide-react';
 
 // UI Components
@@ -329,7 +333,7 @@ const DeveloperHubPage: React.FC = () => {
         }
 
         toast({
-          title: t('تم تفعيل الخدمة', 'Service Activated'),
+          title: t('تم تفع��ل الخدمة', 'Service Activated'),
           description: t(
             `تم تفعيل ${service.nameAr} بنجاح`,
             `${service.name} has been activated successfully`
