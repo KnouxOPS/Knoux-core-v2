@@ -3,21 +3,22 @@
  * إدارة جميع مسارات التطبيق والتنقل
  */
 
-import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 // استيراد الصفحات الرئيسية
-import EnhancedDashboard from "@/pages/dashboard/EnhancedDashboard";
-import NexusCodeEditor from "@/pages/nexus/NexusCodeEditor";
-import AstraNavConsole from "@/pages/navigation/AstraNavConsole";
-import CosmoDataBay from "@/pages/data-processing/CosmoDataBay";
-import QuantumCommandCenter from "@/pages/command/QuantumCommandCenter";
-import ProjectManagementHub from "@/pages/projects/ProjectManagementHub";
-import AnalyticsOptimizationHub from "@/pages/analytics/AnalyticsOptimizationHub";
-import SystemSettingsPage from "@/pages/SystemSettingsPage";
-import AboutPage from "@/pages/about/AboutPage";
-import HelpPage from "@/pages/HelpPage";
-import KnouxTVPage from "@/pages/tv/KnouxTVPage";
+import EnhancedDashboard from '@/pages/dashboard/EnhancedDashboard';
+import NexusCodeEditor from '@/pages/nexus/NexusCodeEditor';
+import AstraNavConsole from '@/pages/navigation/AstraNavConsole';
+import CosmoDataBay from '@/pages/data-processing/CosmoDataBay';
+import QuantumCommandCenter from '@/pages/command/QuantumCommandCenter';
+import ProjectManagementHub from '@/pages/projects/ProjectManagementHub';
+import AnalyticsOptimizationHub from '@/pages/analytics/AnalyticsOptimizationHub';
+import SystemSettingsPage from '@/pages/SystemSettingsPage';
+import AboutPage from '@/pages/about/AboutPage';
+import HelpPage from '@/pages/HelpPage';
+import KnouxTVPage from '@/pages/tv/KnouxTVPage';
+import DeveloperServicesHub from '@/pages/developer/DeveloperServicesHub';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -51,6 +52,9 @@ const AppRoutes: React.FC = () => {
 
       {/* KnouxTV - التلفزيون الكوني */}
       <Route path="/tv" element={<KnouxTVPage />} />
+
+      {/* مركز خدمات المطورين البريميوم */}
+      <Route path="/developer" element={<DeveloperServicesHub />} />
 
       {/* معلومات التطبيق */}
       <Route path="/about" element={<AboutPage />} />
