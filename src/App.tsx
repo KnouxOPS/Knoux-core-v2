@@ -1,21 +1,26 @@
 /**
- * KnouxCore - التطبيق الرئيسي المحسن
- * مع شاشة التحميل المذهلة والمكونات المتقدمة
+ * KnouxI - التطبيق الرئيسي المستقبلي
+ * مع التصميم الجديد والواجهة ثلاثية الألواح
  */
 
 import React, { useContext, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// استيراد المكونات الأساسية
-import EnhancedSidebar from './components/layout/EnhancedSidebar';
-import EnhancedTopBar from './components/layout/EnhancedTopBar';
-import OperationalMonitorDisplay from './components/ui/OperationalMonitorDisplay';
-import FloatingParticles from './components/effects/FloatingParticles';
-import CosmicSplashScreen from './components/splash/CosmicSplashScreen';
+// استيراد المكونات الجديدة
+import KnouxILogo from './components/brand/KnouxILogo';
+import FuturisticDashboard from './components/background/FuturisticDashboard';
+import ThreePanelLayout from './components/layout/ThreePanelLayout';
+import StatisticsPanel, {
+  SystemStats,
+  NetworkStats,
+  UserStats,
+} from './components/stats/StatisticsPanel';
+import CentralOperationsDisplay from './components/operations/CentralOperationsDisplay';
 import LiveKnouxTVBar from './components/tv/LiveKnouxTVBar';
 import TVNotificationOverlay from './components/tv/TVNotificationOverlay';
+import CosmicSplashScreen from './components/splash/CosmicSplashScreen';
 
-// استيراد نظام التوجيه الجديد
+// استيراد نظام التوجيه
 import AppRoutes from './components/routing/AppRoutes';
 
 // استيراد السياقات
