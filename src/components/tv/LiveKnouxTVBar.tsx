@@ -159,21 +159,35 @@ const LiveKnouxTVBar: React.FC = () => {
     };
   }, []);
 
-  // تحديث بيانات المشاهدات والإشارة
+  // تحديث بيانات المشاهدات والإشارة مع تحسين الأداء
   useEffect(() => {
     const statusInterval = setInterval(() => {
-      setCurrentChannel(prev => ({
-        ...prev,
-        viewers: prev.viewers + Math.floor(Math.random() * 20 - 10),
-        signal: Math.max(85, Math.min(100, prev.signal + Math.random() * 4 - 2)),
-      }));
+      setCurrentChannel(prev => {
+        const newViewers = prev.viewers + Math.floor(Math.random() * 20 - 10);
+        const newSignal = Math.max(85, Math.min(100, prev.signal + Math.random() * 4 - 2));
 
-      setSystemStatus(prev => ({
-        ...prev,
-        signal: Math.max(85, Math.min(100, prev.signal + Math.random() * 4 - 2)),
-        battery: Math.max(20, Math.min(100, prev.battery - 0.1)),
-      }));
-    }, 5000);
+        // تحديث فقط إذا كان هناك تغيير ملموس
+        if (Math.abs(newViewers - prev.viewers) > 0 || Math.abs(newSignal - prev.signal) > 1) {
+          return {
+            ...prev,
+            viewers: Math.max(0, newViewers),
+            signal: newSignal,
+          };
+        }
+        return prev;
+      });
+
+      setSystemStatus(prev => {
+        const newSignal = Math.max(85, Math.min(100, prev.signal + Math.random() * 4 - 2));
+        const newBattery = Math.max(20, Math.min(100, prev.battery - 0.01)); // تقليل معدل النفاد
+
+        return {
+          ...prev,
+          signal: newSignal,
+          battery: newBattery,
+        };
+      });
+    }, 10000); // زيادة الفترة إلى 10 ثواني
 
     return () => clearInterval(statusInterval);
   }, []);
