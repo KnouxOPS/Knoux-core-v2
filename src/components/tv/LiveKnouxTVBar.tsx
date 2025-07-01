@@ -140,24 +140,29 @@ const LiveKnouxTVBar: React.FC = () => {
     recording: false,
   });
 
-  // تحديث الوقت والمحتوى المباشر
+  // تحديث الوقت والمحتوى المباشر مع تحسين الأداء
   useEffect(() => {
-    const timeInterval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
+    let timeInterval: NodeJS.Timeout;
+    let contentInterval: NodeJS.Timeout;
 
-    const contentInterval = setInterval(() => {
-      setLiveContent(prev => ({
-        ...prev,
-        elapsed: prev.elapsed + 1,
-      }));
-    }, 1000);
+    if (isPlaying) {
+      timeInterval = setInterval(() => {
+        setCurrentTime(new Date());
+      }, 1000);
+
+      contentInterval = setInterval(() => {
+        setLiveContent(prev => ({
+          ...prev,
+          elapsed: prev.elapsed + 1,
+        }));
+      }, 1000);
+    }
 
     return () => {
-      clearInterval(timeInterval);
-      clearInterval(contentInterval);
+      if (timeInterval) clearInterval(timeInterval);
+      if (contentInterval) clearInterval(contentInterval);
     };
-  }, []);
+  }, [isPlaying]); // إضافة isPlaying كتبعية لإيقاف التحديثات عند الإيقاف
 
   // تحديث بيانات المشاهدات والإشارة مع تحسين الأداء
   useEffect(() => {
@@ -205,7 +210,7 @@ const LiveKnouxTVBar: React.FC = () => {
     return viewers.toString();
   }, []);
 
-  // التبديل بين القنوات مع تحسين ��لأداء
+  // التبديل بين القنوات مع تحسين الأداء
   const switchChannel = useCallback(
     (direction: 'next' | 'prev') => {
       const currentIndex = mockChannels.findIndex(ch => ch.id === currentChannel.id);
@@ -491,7 +496,7 @@ const LiveKnouxTVBar: React.FC = () => {
                   <div className="space-y-2">
                     <Button size="sm" variant="outline" className="w-full border-slate-600">
                       <Settings className="w-4 h-4 mr-2" />
-                      إعدادات البث
+                      إعدادا�� البث
                     </Button>
                     <Button
                       size="sm"
