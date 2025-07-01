@@ -3,32 +3,33 @@
  * مع شاشة التحميل المذهلة والمكونات المتقدمة
  */
 
-import React, { useContext, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useContext, useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // استيراد المكونات الأساسية
-import EnhancedSidebar from "./components/layout/EnhancedSidebar";
-import EnhancedTopBar from "./components/layout/EnhancedTopBar";
-import OperationalMonitorDisplay from "./components/ui/OperationalMonitorDisplay";
-import FloatingParticles from "./components/effects/FloatingParticles";
-import CosmicSplashScreen from "./components/splash/CosmicSplashScreen";
+import EnhancedSidebar from './components/layout/EnhancedSidebar';
+import EnhancedTopBar from './components/layout/EnhancedTopBar';
+import OperationalMonitorDisplay from './components/ui/OperationalMonitorDisplay';
+import FloatingParticles from './components/effects/FloatingParticles';
+import CosmicSplashScreen from './components/splash/CosmicSplashScreen';
+import LiveKnouxTVBar from './components/tv/LiveKnouxTVBar';
 
 // استيراد نظام التوجيه الجديد
-import AppRoutes from "./components/routing/AppRoutes";
+import AppRoutes from './components/routing/AppRoutes';
 
 // استيراد السياقات
-import { ThemeContext } from "./contexts/ThemeContext";
-import { useSystemSettings } from "./contexts/SystemSettingsContext";
-import NotificationContainer from "./components/notifications/NotificationContainer";
+import { ThemeContext } from './contexts/ThemeContext';
+import { useSystemSettings } from './contexts/SystemSettingsContext';
+import NotificationContainer from './components/notifications/NotificationContainer';
 import CosmicNotificationSystem, {
   useCosmicNotifications,
-} from "./components/notifications/CosmicNotificationSystem";
+} from './components/notifications/CosmicNotificationSystem';
 
 // استيراد الثوابت والتكوينات
-import { Language, Theme, AnimationType } from "./constants";
-import { APP_CONFIG } from "./config/app.config";
-import { themes, getThemeVariables } from "./styles/themes";
-import "./styles/cosmic-theme.css";
+import { Language, Theme, AnimationType } from './constants';
+import { APP_CONFIG } from './config/app.config';
+import { themes, getThemeVariables } from './styles/themes';
+import './styles/cosmic-theme.css';
 
 const App: React.FC = () => {
   const { theme } = useContext(ThemeContext);
@@ -51,56 +52,56 @@ const App: React.FC = () => {
       efficiency: 87,
     },
     nexusSummary: {
-      complexity: "Moderate",
-      performance: "Excellent",
+      complexity: 'Moderate',
+      performance: 'Excellent',
       suggestionsCount: 12,
       warningsCount: 3,
       linesAnalyzed: 2847,
     },
     astranavSummary: {
-      status: "En Route",
-      eta: "02:37:15",
-      hazardLevel: "Low",
-      currentSystem: "Sol System",
-      destination: "Alpha Centauri",
+      status: 'En Route',
+      eta: '02:37:15',
+      hazardLevel: 'Low',
+      currentSystem: 'Sol System',
+      destination: 'Alpha Centauri',
     },
     cosmodataSummary: {
       nodes: 1247,
       connections: 3891,
       anomalies: 7,
-      dataFlowRate: "2.4 TB/s",
+      dataFlowRate: '2.4 TB/s',
       processingLoad: 73,
     },
     commandSummary: {
       activeOperations: 5,
       logCount: 127,
-      permissionsStatus: "Secure",
-      lastCommand: "scan current sector",
-      securityLevel: "Alpha",
+      permissionsStatus: 'Secure',
+      lastCommand: 'scan current sector',
+      securityLevel: 'Alpha',
     },
     projectSummary: {
       active: 8,
       collaborators: 15,
       pendingTasks: 23,
-      recentActivity: "12 min ago",
+      recentActivity: '12 min ago',
     },
     analyticsSummary: {
       codeEnhanced: 341,
-      timeSpent: "47h 23m",
-      optimizationTipsStatus: "Available",
+      timeSpent: '47h 23m',
+      optimizationTipsStatus: 'Available',
       productivityScore: 94,
     },
     systemSummary: {
-      uptime: "15d 7h 42m",
+      uptime: '15d 7h 42m',
       updatesPending: 3,
-      aiSettingsStatus: "Optimized",
-      systemHealth: "Excellent",
+      aiSettingsStatus: 'Optimized',
+      systemHealth: 'Excellent',
     },
     helpSummary: {
       faqs: 156,
       tutorials: 42,
       tickets: 2,
-      lastSearched: "AI integration",
+      lastSearched: 'AI integration',
     },
   });
 
@@ -109,39 +110,24 @@ const App: React.FC = () => {
     if (!isReady) return;
 
     const interval = setInterval(() => {
-      setOmdData((prev) => ({
+      setOmdData(prev => ({
         ...prev,
         shipStatus: {
           ...prev.shipStatus,
-          cpu: Math.max(
-            30,
-            Math.min(95, prev.shipStatus.cpu + (Math.random() - 0.5) * 8),
-          ),
-          memory: Math.max(
-            40,
-            Math.min(90, prev.shipStatus.memory + (Math.random() - 0.5) * 6),
-          ),
+          cpu: Math.max(30, Math.min(95, prev.shipStatus.cpu + (Math.random() - 0.5) * 8)),
+          memory: Math.max(40, Math.min(90, prev.shipStatus.memory + (Math.random() - 0.5) * 6)),
           network: Math.max(
             50,
-            Math.min(100, prev.shipStatus.network + (Math.random() - 0.5) * 10),
+            Math.min(100, prev.shipStatus.network + (Math.random() - 0.5) * 10)
           ),
-          power: Math.max(
-            70,
-            Math.min(100, prev.shipStatus.power + (Math.random() - 0.5) * 4),
-          ),
+          power: Math.max(70, Math.min(100, prev.shipStatus.power + (Math.random() - 0.5) * 4)),
           temperature: Math.max(
             35,
-            Math.min(
-              55,
-              prev.shipStatus.temperature + (Math.random() - 0.5) * 3,
-            ),
+            Math.min(55, prev.shipStatus.temperature + (Math.random() - 0.5) * 3)
           ),
           efficiency: Math.max(
             75,
-            Math.min(
-              100,
-              prev.shipStatus.efficiency + (Math.random() - 0.5) * 5,
-            ),
+            Math.min(100, prev.shipStatus.efficiency + (Math.random() - 0.5) * 5)
           ),
         },
       }));
@@ -169,8 +155,7 @@ const App: React.FC = () => {
       const { language } = systemSettingsContextHook.settings;
 
       document.documentElement.lang = language;
-      document.documentElement.dir =
-        language === Language.ARABIC ? "rtl" : "ltr";
+      document.documentElement.dir = language === Language.ARABIC ? 'rtl' : 'ltr';
       document.documentElement.className = theme;
     }
   }, [theme, systemSettingsContextHook?.settings.language]);
@@ -183,13 +168,13 @@ const App: React.FC = () => {
     // Welcome notification
     setTimeout(() => {
       cosmicNotifications.notifySystem(
-        "KnouxCore Online",
-        "جميع الأنظمة متصلة ومعايرة. مرحباً بك في المركز الذكي للتحكم الفضائي.",
+        'KnouxCore Online',
+        'جميع الأنظ��ة متصلة ومعايرة. مرحباً بك في المركز الذكي للتحكم الفضائي.',
         {
           duration: 6000,
-          source: "System",
-          priority: "normal",
-        },
+          source: 'System',
+          priority: 'normal',
+        }
       );
     }, 1000);
   };
@@ -222,27 +207,25 @@ const App: React.FC = () => {
     >
       {/* شاشة التح��يل */}
       <AnimatePresence>
-        {isLoading && (
-          <CosmicSplashScreen
-            onLoadComplete={handleLoadComplete}
-            duration={4000}
-          />
-        )}
+        {isLoading && <CosmicSplashScreen onLoadComplete={handleLoadComplete} duration={4000} />}
       </AnimatePresence>
+
+      {/* شريط كنووكس تي في المباشر */}
+      <AnimatePresence>{isReady && <LiveKnouxTVBar />}</AnimatePresence>
 
       {/* المحتوى الرئيسي */}
       <AnimatePresence>
         {isReady && (
           <motion.div
-            className="flex h-screen overflow-hidden"
+            className="flex h-screen overflow-hidden pt-[60px]" // إضافة padding-top للشريط العلوي
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           >
             {/* الجسيمات المتحركة في الخلفية */}
             <FloatingParticles
               count={APP_CONFIG.ANIMATIONS.PARTICLES.COUNT}
-              theme={theme === "light" ? Theme.LIGHT : Theme.DARK}
+              theme={theme === 'light' ? Theme.LIGHT : Theme.DARK}
               enabled={true}
               interactiveMode={false}
               animationType={AnimationType.FADE}
@@ -250,10 +233,7 @@ const App: React.FC = () => {
             />
 
             {/* الشريط الجانبي المحسن */}
-            <EnhancedSidebar
-              className="relative z-10"
-              onToggle={handleSidebarToggle}
-            />
+            <EnhancedSidebar className="relative z-10" onToggle={handleSidebarToggle} />
 
             {/* المنطقة الرئيسية */}
             <div className="flex-1 flex flex-col overflow-hidden relative">
@@ -294,8 +274,8 @@ const App: React.FC = () => {
                 <div
                   className="absolute inset-0 backdrop-blur-sm"
                   style={{
-                    background: "rgba(26, 0, 37, 0.1)",
-                    backdropFilter: "blur(10px)",
+                    background: 'rgba(26, 0, 37, 0.1)',
+                    backdropFilter: 'blur(10px)',
                   }}
                 />
 
@@ -320,15 +300,15 @@ const App: React.FC = () => {
                       key={i}
                       className="absolute"
                       style={{
-                        width: "1px",
-                        height: "100%",
+                        width: '1px',
+                        height: '100%',
                         background: `linear-gradient(to bottom,
                           transparent,
                           rgba(0, 255, 213, 0.3),
                           transparent
                         )`,
                         left: `${30 + i * 20}%`,
-                        filter: "blur(0.5px)",
+                        filter: 'blur(0.5px)',
                       }}
                       animate={{
                         opacity: [0, 0.7, 0],
@@ -338,7 +318,7 @@ const App: React.FC = () => {
                         duration: 4,
                         repeat: Infinity,
                         delay: i * 1.5,
-                        ease: "easeInOut",
+                        ease: 'easeInOut',
                       }}
                     />
                   ))}
@@ -368,9 +348,7 @@ const App: React.FC = () => {
                 onDismiss={cosmicNotifications.dismissNotification}
                 onAction={(id, actionIndex) => {
                   // Handle notification actions
-                  console.log(
-                    `Action ${actionIndex} triggered for notification ${id}`,
-                  );
+                  console.log(`Action ${actionIndex} triggered for notification ${id}`);
                 }}
               />
             </div>
@@ -385,8 +363,8 @@ const App: React.FC = () => {
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
-                    filter: "blur(1px)",
-                    boxShadow: "0 0 10px rgba(0, 255, 213, 0.8)",
+                    filter: 'blur(1px)',
+                    boxShadow: '0 0 10px rgba(0, 255, 213, 0.8)',
                   }}
                   animate={{
                     opacity: [0, 1, 0],
@@ -396,7 +374,7 @@ const App: React.FC = () => {
                     duration: 2,
                     repeat: Infinity,
                     delay: Math.random() * 5,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                   }}
                 />
               ))}
@@ -419,21 +397,13 @@ const App: React.FC = () => {
         }
 
         ::-webkit-scrollbar-thumb {
-          background: linear-gradient(
-            180deg,
-            rgba(0, 255, 213, 0.6),
-            rgba(124, 58, 237, 0.6)
-          );
+          background: linear-gradient(180deg, rgba(0, 255, 213, 0.6), rgba(124, 58, 237, 0.6));
           border-radius: 4px;
           transition: all 0.2s ease;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(
-            180deg,
-            rgba(0, 255, 213, 0.8),
-            rgba(124, 58, 237, 0.8)
-          );
+          background: linear-gradient(180deg, rgba(0, 255, 213, 0.8), rgba(124, 58, 237, 0.8));
         }
 
         /* تأثيرات زجاجية */
@@ -454,9 +424,9 @@ const App: React.FC = () => {
         /* تحسينات الخطوط العربية */
         * {
           font-feature-settings:
-            "kern" 1,
-            "liga" 1,
-            "calt" 1;
+            'kern' 1,
+            'liga' 1,
+            'calt' 1;
           text-rendering: optimizeLegibility;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
