@@ -31,6 +31,7 @@ import { Language, Theme, AnimationType } from './constants';
 import { APP_CONFIG } from './config/app.config';
 import { themes, getThemeVariables } from './styles/themes';
 import './styles/cosmic-theme.css';
+import './styles/tv-styles.css';
 
 const App: React.FC = () => {
   const { theme } = useContext(ThemeContext);
