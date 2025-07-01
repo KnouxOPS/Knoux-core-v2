@@ -17,7 +17,6 @@ import AnalyticsOptimizationHub from '@/pages/analytics/AnalyticsOptimizationHub
 import SystemSettingsPage from '@/pages/SystemSettingsPage';
 import AboutPage from '@/pages/about/AboutPage';
 import HelpPage from '@/pages/HelpPage';
-import KnouxTVPage from '@/pages/tv/KnouxTVPage';
 import DeveloperServicesHub from '@/pages/developer/DeveloperServicesHub';
 
 const AppRoutes: React.FC = () => {
@@ -49,9 +48,6 @@ const AppRoutes: React.FC = () => {
 
       {/* إعدادات النظام */}
       <Route path="/settings" element={<SystemSettingsPage />} />
-
-      {/* KnouxTV - التلفزيون الكوني */}
-      <Route path="/tv" element={<KnouxTVPage />} />
 
       {/* مركز خدمات المطورين البريميوم */}
       <Route path="/developer" element={<DeveloperServicesHub />} />
