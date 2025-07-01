@@ -355,7 +355,7 @@ const App: React.FC = () => {
               />
 
               {/* إشعارات كنووكس تي في */}
-              <TVNotificationOverlay />
+              <TVNotificationOverlay currentChannel="KnouxSpace" viewers={15420} signal={98} />
             </div>
 
             {/* طبقة تأثيرات إضافية */}
