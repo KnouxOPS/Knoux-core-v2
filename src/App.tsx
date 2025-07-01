@@ -13,6 +13,7 @@ import OperationalMonitorDisplay from './components/ui/OperationalMonitorDisplay
 import FloatingParticles from './components/effects/FloatingParticles';
 import CosmicSplashScreen from './components/splash/CosmicSplashScreen';
 import LiveKnouxTVBar from './components/tv/LiveKnouxTVBar';
+import TVNotificationOverlay from './components/tv/TVNotificationOverlay';
 
 // استيراد نظام التوجيه الجديد
 import AppRoutes from './components/routing/AppRoutes';
@@ -169,7 +170,7 @@ const App: React.FC = () => {
     setTimeout(() => {
       cosmicNotifications.notifySystem(
         'KnouxCore Online',
-        'جميع الأنظ��ة متصلة ومعايرة. مرحباً بك في المركز الذكي للتحكم الفضائي.',
+        'جميع الأنظمة متصلة ومعايرة. مرحباً بك في المركز الذكي للتحكم الفضائي.',
         {
           duration: 6000,
           source: 'System',
@@ -351,6 +352,9 @@ const App: React.FC = () => {
                   console.log(`Action ${actionIndex} triggered for notification ${id}`);
                 }}
               />
+
+              {/* إشعارات كنووكس تي في */}
+              <TVNotificationOverlay />
             </div>
 
             {/* طبقة تأثيرات إضافية */}
