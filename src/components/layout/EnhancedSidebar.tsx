@@ -43,6 +43,7 @@ import {
   Terminal,
   FolderOpen,
   BarChart3,
+  Crown,
 } from 'lucide-react';
 
 import { ThemeContext } from '@/contexts/ThemeContext';
