@@ -1,0 +1,295 @@
+/**
+ * أنماط كنووكس تي في المخصصة
+ * Custom KnouxTV Styles
+ */
+
+/* تأثيرات النيون للتلفزيون */
+.tv-neon-glow {
+  box-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+}
+
+.tv-neon-border {
+  border: 1px solid currentColor;
+  box-shadow:
+    inset 0 0 5px currentColor,
+    0 0 5px currentColor;
+}
+
+/* خلفية الشاشة الكونية */
+.tv-cosmic-bg {
+  background:
+    radial-gradient(ellipse at top, rgba(6, 182, 212, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse at bottom, rgba(139, 92, 246, 0.1) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+  backdrop-filter: blur(12px);
+}
+
+/* تأثي��ات النبض للبث المباشر */
+.live-pulse {
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* تأثير الوميض للإشارة */
+.signal-blink {
+  animation: signalBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes signalBlink {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* تدرج الطيف للقنوات */
+.channel-spectrum {
+  background: linear-gradient(
+    90deg,
+    #06b6d4 0%,
+    #8b5cf6 25%,
+    #ec4899 50%,
+    #f59e0b 75%,
+    #10b981 100%
+  );
+  background-size: 200% 100%;
+  animation: spectrumFlow 4s ease-in-out infinite;
+}
+
+@keyframes spectrumFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* شريط تقدم البث */
+.progress-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: progressSweep 2s infinite;
+}
+
+@keyframes progressSweep {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* تأثيرات تفاعلية للأزرار */
+.tv-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.tv-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tv-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.tv-button:hover::before {
+  left: 100%;
+}
+
+/* شاشة البث المباشر */
+.live-screen {
+  position: relative;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+}
+
+.live-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.02) 2px,
+    rgba(255, 255, 255, 0.02) 4px
+  );
+  pointer-events: none;
+}
+
+/* تأثير الذبذبة للتداخل */
+.tv-static {
+  position: relative;
+}
+
+.tv-static::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 2px
+    );
+  animation: staticNoise 0.1s infinite;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@keyframes staticNoise {
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  10% {
+    transform: translateX(-1px) translateY(-1px);
+  }
+  20% {
+    transform: translateX(1px) translateY(0px);
+  }
+  30% {
+    transform: translateX(0px) translateY(1px);
+  }
+  40% {
+    transform: translateX(-1px) translateY(0px);
+  }
+  50% {
+    transform: translateX(1px) translateY(-1px);
+  }
+  60% {
+    transform: translateX(0px) translateY(0px);
+  }
+  70% {
+    transform: translateX(-1px) translateY(1px);
+  }
+  80% {
+    transform: translateX(1px) translateY(0px);
+  }
+  90% {
+    transform: translateX(0px) translateY(-1px);
+  }
+  100% {
+    transform: translateX(-1px) translateY(0px);
+  }
+}
+
+/* متجاوبية الشريط */
+@media (max-width: 768px) {
+  .tv-bar-expanded {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tv-bar-controls {
+    order: -1;
+  }
+
+  .tv-preview {
+    aspect-ratio: 16/9;
+    max-height: 200px;
+  }
+}
+
+/* تحسينات الأداء */
+.tv-optimized {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* تأثيرات النصوص المضيئة */
+.tv-text-glow {
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor;
+}
+
+/* شريط الطيف الصوتي */
+.audio-spectrum {
+  display: flex;
+  align-items: end;
+  gap: 1px;
+  height: 20px;
+}
+
+.spectrum-bar {
+  width: 2px;
+  background: linear-gradient(to top, #06b6d4, #8b5cf6);
+  animation: spectrumPulse 0.5s ease-in-out infinite alternate;
+}
+
+.spectrum-bar:nth-child(1) {
+  animation-delay: 0s;
+}
+.spectrum-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.spectrum-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.spectrum-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.spectrum-bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+@keyframes spectrumPulse {
+  from {
+    height: 20%;
+  }
+  to {
+    height: 100%;
+  }
+}
